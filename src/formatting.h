@@ -1,3 +1,5 @@
+//Copyright (C) 2023 Thomas Gingele
+
 #ifndef FORMATTING_H
 #define FORMATTING_H
 

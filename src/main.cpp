@@ -1,3 +1,5 @@
+//Copyright (C) 2023 Thomas Gingele
+
 #include "common_headers.h"
 #include "banner.h"
 #include "formatting.h"
