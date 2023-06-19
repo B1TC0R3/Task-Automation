@@ -3,15 +3,18 @@
 #ifndef CONFIG_READER_H
 #define CONFIG_READER_H
 
+#include <sys/stat.h>
+
 #include "common_headers.h"
 #include "yaml-cpp/yaml.h"
 
-template <typename T>
 class ConfigReader {
+    private:
+        YAML::Node yaml;
+
     public:
-        ConfigReader();
-        void load(std::string path);
-        T valueOf(std::string setting_name);
+        void load(std::string file);
+        std::string valueOf(std::string setting_name);
 };
 
 #endif

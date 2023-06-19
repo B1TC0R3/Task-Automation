@@ -6,5 +6,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <stdexcept>
+#include <unistd.h>
 
 #endif
