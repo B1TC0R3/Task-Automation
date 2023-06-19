@@ -3,7 +3,7 @@ application_name = system-manager
 
 # Configuration
 objects   = src/main.cpp src/config_reader.cpp
-libraries = -lyaml-cpp
+libraries = -lyaml-cpp -lgit2
 source_dir  = ./src
 build_dir   = ./bin
 application_path = $(build_dir)/$(application_name)
