@@ -1,17 +1,20 @@
 //Copyright (C) 2023 Thomas Gingele
 
-#include "common_headers.h"
-#include "banner.h"
-#include "formatting.h"
-#include "config_reader.h"
+#include "common_headers.hpp"
+#include "banner.hpp"
+#include "formatting.hpp"
+#include "config_reader.hpp"
 
-std::string config = "resources/config.yml";
+std::string config_file = "resources/config.yml";
 
 int main() {
-    std::cout << FG_CYAN << BANNER << DEFAULT << std::endl;
 
-    ConfigReader cr;
-    cr.load(config);
+    ConfigReader configReader;
+    Config config = configReader.load(config_file);
+
+    if (config.printBanner) {
+        std::cout << FG_CYAN << BANNER << DEFAULT << std::endl;
+    }
 
     return 0;
 }

@@ -1,8 +1,8 @@
 //Copyright (C) 2023 Thomas Gingele
 
-#include "config_reader.h"
+#include "config_reader.hpp"
 
-void ConfigReader::load(std::string file) {
+Config ConfigReader::load(std::string file) {
     std::ifstream filestream(file);
     std::stringstream buffer;
 
@@ -13,8 +13,14 @@ void ConfigReader::load(std::string file) {
 
     buffer << filestream.rdbuf();
     this->yaml = YAML::Load(buffer.str());
+
+    return this->convertYamlToStruct();
 }
 
-std::string ConfigReader::valueOf(std::string setting_name) {
-    throw std::runtime_error("Method ConfigReader::valueOf(std::string) not implemented!");
+Config ConfigReader::convertYamlToStruct() {
+    Config config;
+
+    config.printBanner = this->yaml["printBanner"].as<bool>();
+
+    return config;
 }

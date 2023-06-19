@@ -3,7 +3,7 @@
 #ifndef BANNER_H
 #define BANNER_H
 
-#include "common_headers.h"
+#include "common_headers.hpp"
 
 const std::string BANNER = 
 "\
