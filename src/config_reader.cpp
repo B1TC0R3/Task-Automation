@@ -33,18 +33,27 @@ Config ConfigReader::convertYamlToStruct() {
 }
 
 DotfileConfig ConfigReader::parseDotfileConfig() {
-    DotfileConfig dotfile_config;
+    DotfileConfig dotfile_config = dotfile_config_fallback;
+
     YAML::Node dotfile_yaml = this->yaml["dotfiles"];
+    YAML::Node filebind_yaml = dotfile_yaml["file-bindings"];
 
     if (!dotfile_yaml) {
         return dotfile_config_fallback;
     }
 
-    dotfile_config.use_git = this->getValue(dotfile_yaml["use-git"], false);
-    dotfile_config.git_repository = this->getValue(dotfile_yaml["git-repository"], "");
-    dotfile_config.clone_to = this->getValue(dotfile_yaml["clone-to"], "");
+    dotfile_config.use_git = this->getValue<bool>(dotfile_yaml["use-git"], false);
+    dotfile_config.git_repository = this->getValue<std::string>(dotfile_yaml["git-repository"], "");
+    dotfile_config.clone_to = this->getValue<std::string>(dotfile_yaml["clone-to"], "");
 
-    //TODO: Implement yaml to vector conversion
+    for (int i = 0; i < filebind_yaml.size(); i++) {
+        dotfile_config.file_bindings.push_back(
+            FileBinding {
+                filebind_yaml[i]["from"].as<std::string>(),
+                filebind_yaml[i]["to"].as<std::string>()
+            }
+        );
+    }
 
     return dotfile_config;
 }
