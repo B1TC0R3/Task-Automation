@@ -15,7 +15,7 @@ struct FileBinding {
 
 struct DotfileConfig {
     bool use_git;
-    std::string git_repository;
+    std::string url;
     std::string clone_to;
     std::vector<FileBinding> file_bindings;
 };

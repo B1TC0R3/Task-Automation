@@ -2,7 +2,7 @@
 application_name = system-manager
 
 # Configuration
-objects   = src/main.cpp src/config_reader.cpp
+objects   = src/main.cpp src/config_reader.cpp src/dotfile_handler.cpp
 libraries = -lyaml-cpp -lgit2
 source_dir  = ./src
 build_dir   = ./bin

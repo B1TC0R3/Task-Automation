@@ -43,7 +43,7 @@ DotfileConfig ConfigReader::parseDotfileConfig() {
     }
 
     dotfile_config.use_git = this->getValue<bool>(dotfile_yaml["use-git"], false);
-    dotfile_config.git_repository = this->getValue<std::string>(dotfile_yaml["git-repository"], "");
+    dotfile_config.url = this->getValue<std::string>(dotfile_yaml["url"], "");
     dotfile_config.clone_to = this->getValue<std::string>(dotfile_yaml["clone-to"], "");
 
     for (int i = 0; i < filebind_yaml.size(); i++) {

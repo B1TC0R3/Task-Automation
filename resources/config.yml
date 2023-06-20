@@ -1,7 +1,7 @@
 printBanner: true
 dotfiles:
   use-git: true
-  git-repository: "B1TC0R3/dotfiles"
+  url: "https://github.com/B1TC0R3/dotfiles"
   clone-to: "/home/b1tc0r3/Documents/Test"
   file-bindings: [
     {
