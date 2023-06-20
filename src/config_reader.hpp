@@ -8,8 +8,21 @@
 #include "common_headers.hpp"
 #include "yaml-cpp/yaml.h"
 
+struct FileBinding {
+    std::string from;
+    std::string to;
+};
+
+struct DotfileConfig {
+    bool use_git;
+    std::string git_repository;
+    std::string clone_to;
+    std::vector<FileBinding> file_bindings;
+};
+
 struct Config {
-    bool printBanner = true;
+    bool printBanner;
+    DotfileConfig dotfiles;
 };
 
 class ConfigReader {
@@ -20,6 +33,7 @@ class ConfigReader {
 
     private:
         Config convertYamlToStruct();
+        DotfileConfig parseDotfileConfig();
 
         template<typename Type>
         Type getValue(YAML::Node node, Type defaultValue);

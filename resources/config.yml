@@ -1,4 +1,8 @@
-printBanner: true
-above:
-  below:
-    value: "Hemlo"
+printBanner: true,
+dotfiles:
+  use-git: true,
+  git-repository: "B1TC0R3/dotfiles",
+  clone-to: "/home/b1tc0r3/Documents/Test"
+  file-bindigings: [
+    ["/home/b1tc0r3/.config/bat/config", "/home/b1tc0r3/Documents/Test/bat/config"],
+  ]
