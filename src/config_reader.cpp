@@ -20,7 +20,16 @@ Config ConfigReader::load(std::string file) {
 Config ConfigReader::convertYamlToStruct() {
     Config config;
 
-    config.printBanner = this->yaml["printBanner"].as<bool>();
+    config.printBanner = this->getValue<bool>(this->yaml["printBanner"], true);
 
     return config;
+}
+
+template<typename Type>
+Type ConfigReader::getValue(YAML::Node node, Type defaultValue) {
+    if (node) {
+        return node.as<Type>();
+    }
+
+    return defaultValue;
 }

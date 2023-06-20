@@ -20,6 +20,9 @@ class ConfigReader {
 
     private:
         Config convertYamlToStruct();
+
+        template<typename Type>
+        Type getValue(YAML::Node node, Type defaultValue);
 };
 
 #endif
