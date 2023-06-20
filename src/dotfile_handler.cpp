@@ -12,18 +12,24 @@ void DotfileHandler::setDotfileConfig(DotfileConfig config) {
 int DotfileHandler::cloneRepository() {
     git_libgit2_init();
 
-    int error = git_clone(
-        &this->repo,
-        this->config.url.c_str(),
-        this->config.clone_to.c_str(),
-        NULL
+    int status = this->handleGitAction(
+        git_clone(
+            &this->repo,
+            this->config.url.c_str(),
+            this->config.clone_to.c_str(),
+            NULL
+        )
     );
 
-    if (error != 0) {
+    git_libgit2_shutdown();
+    return status;
+}
+
+int DotfileHandler::handleGitAction(int status) {
+    if (status != 0) {
         const git_error* e = git_error_last();
         std::cout << e->klass << " | " << e->message << std::endl;
     }
 
-    git_libgit2_shutdown();
-    return error;
+    return status;
 }

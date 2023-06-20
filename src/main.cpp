@@ -19,9 +19,6 @@ int main() {
 
     std::cout << "Cloning into " << config.dotfiles.url << std::endl;
     DotfileHandler dotfile_handler (config.dotfiles);
-    int error = dotfile_handler.cloneRepository();
-
-    std::cout << "Status (expected=0): " << error << std::endl;
 
     return 0;
 }

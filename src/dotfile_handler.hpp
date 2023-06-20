@@ -16,6 +16,9 @@ class DotfileHandler {
 
         // SETTER
         void setDotfileConfig(DotfileConfig config);
+
+    private:
+        int handleGitAction(int status);
 };
 
 #endif
