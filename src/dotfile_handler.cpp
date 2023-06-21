@@ -39,6 +39,18 @@ void DotfileHandler::backupDotfiles() {
     }
 }
 
+void DotfileHandler::syncDotfiles() {
+    for (int i = 0; i < this->config.file_bindings.size(); i++) {
+        this->createDirectory(config.file_bindings.at(i).to);
+
+        std::filesystem::copy(
+            config.file_bindings.at(i).to,
+            config.file_bindings.at(i).from,
+            this->cp_opt
+        );
+    }
+}
+
 int DotfileHandler::handleGitAction(int status) {
     if (status != 0) {
         const git_error* e = git_error_last();
