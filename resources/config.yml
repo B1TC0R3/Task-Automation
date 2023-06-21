@@ -10,6 +10,6 @@ dotfiles:
     },
     {
       from: "/home/b1tc0r3/.config/picom/picom.conf",
-      to: "/home/b1tc0r3/Documents/dotfiles/picom/picom.conf"
+      to: "/home/b1tc0r3/Documents/Test/picom/picom.conf"
     }
   ]

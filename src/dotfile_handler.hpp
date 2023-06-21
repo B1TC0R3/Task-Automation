@@ -9,16 +9,20 @@
 class DotfileHandler {
     DotfileConfig config;
     git_repository *repo; 
+    std::filesystem::copy_options cp_opt;
 
     public:
         DotfileHandler(DotfileConfig config);
-        int cloneRepository();
+        void cloneRepository();
+        void backupDotfiles();
+        void syncDotfiles();
 
         // SETTER
         void setDotfileConfig(DotfileConfig config);
 
     private:
         int handleGitAction(int status);
+        void createDirectory(std::string path);
 };
 
 #endif

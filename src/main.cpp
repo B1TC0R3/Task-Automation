@@ -12,13 +12,13 @@ int main() {
 
     ConfigReader configReader;
     Config config = configReader.load(config_file);
+    DotfileHandler dotfile_handler (config.dotfiles);
 
     if (config.printBanner) {
         std::cout << FG_CYAN << BANNER << DEFAULT << std::endl;
     }
 
-    std::cout << "Cloning into " << config.dotfiles.url << std::endl;
-    DotfileHandler dotfile_handler (config.dotfiles);
+    dotfile_handler.backupDotfiles();
 
     return 0;
 }
